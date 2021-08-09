@@ -1,0 +1,22 @@
+
+<!-- <h1>Welome, {{ students[2].name }}</h1>
+
+<h3><span>ID: {{ students[2].id }}</span></h3>
+<h3><span>Major: {{ students[2].major }}</span></h3> -->
+
+
+<ul class="students">
+    <li *ngFor="let student of students" (click) = "onSelect(student)" 
+    [class.student] = "student === selectedStudent">
+        <span class="badge">{{ student.id }}</span>
+        {{ student.name }} | {{ student.major }}
+    </li>
+
+    <div *ngIf="selectedStudent">
+        <h2>{{ selectedStudent.name }}</h2>
+        <div><span>ID: {{ selectedStudent.id }}</span></div>
+        <div><span>Major: {{ selectedStudent.major }}</span></div>
+        <label>Change Major: </label>
+        <input ngModel="{{selectedStudent.major}}" placeholder="Major" />
+    </div>
+</ul>
